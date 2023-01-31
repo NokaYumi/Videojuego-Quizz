@@ -1,0 +1,45 @@
+{
+	"name": "text",
+	"plugin-id": "Text",
+	"sid": 494131727546718,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "data",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 126290378302722
+		},
+		{
+			"name": "correctanswer",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 757864007804873
+		},
+		{
+			"name": "id",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 332553208148833
+		},
+		{
+			"name": "LabelX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 663661091342921
+		},
+		{
+			"name": "LabelY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 214540306672432
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

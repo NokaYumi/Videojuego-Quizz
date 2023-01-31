@@ -1,0 +1,54 @@
+{
+
+  "order": [ 0 ],
+  "lang": [ "español" ],
+  "points": [ 100 ],
+  "positionlabel": [ -300, 600 ],
+  "framelabel": [ 0 ],
+  "loses": [ 0 ],
+  "level": [ 1 ],
+  "gamestart": [ false ],
+  "gameover": [ false ],
+  "questions": [ 4 ],
+
+
+
+  "español": [
+
+    {
+      "question": "¿Cuantos bits hay en un byte?",
+      "answer1": "4",
+      "answer2": "8",
+      "answer3": "16",
+      "answer4": "6",
+      "correctanswer": "8"
+    },
+    {
+      "question": "¿Cuantos tipos de rutas en gestión de archivos existen?",
+      "answer1": "Absolutas y Relativas.",
+      "answer2": "Continuas, Absolutas, Relativas y directas.",
+      "answer3": "Directas.",
+      "answer4": "No se diferencian por tipos.",
+      "correctanswer": "Absolutas y Relativas."
+    },
+    {
+      "question": "¿Cuantos tipos de redes hay?",
+      "answer1": "PAN;LAN;MAN",
+      "answer2": "LAN",
+      "answer3": "WAN;PAN",
+      "answer4": "PAN;LAN;MAN;WAN",
+      "correctanswer": "PAN;LAN;MAN;WAN"
+    },
+    {
+      "question": "¿Cual de estos es un tipo de alojamiento web?",
+      "answer1": "Alojamiento gratuito.",
+      "answer2": "Servidores comunitarios.",
+      "answer3": "Servidores gratuitos.",
+      "answer4": "Alojamiento dedicaddo.",
+      "correctanswer": "Alojamiento gratuito."
+    }
+
+  ]
+
+}
+

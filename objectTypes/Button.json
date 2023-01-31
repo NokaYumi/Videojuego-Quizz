@@ -1,0 +1,14 @@
+{
+	"name": "Button",
+	"plugin-id": "Button",
+	"sid": 973078794415550,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "bound",
+			"name": "BoundToLayout",
+			"sid": 592583136697646
+		}
+	]
+}

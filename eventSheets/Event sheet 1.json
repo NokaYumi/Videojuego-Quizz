@@ -1,0 +1,669 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 425450783449583
+				}
+			],
+			"actions": [
+				{
+					"id": "request-project-file",
+					"objectClass": "AJAX",
+					"sid": 255772366417490,
+					"parameters": {
+						"tag": "\"json\"",
+						"file": "questions.json"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 674016274333660
+				},
+				{
+					"id": "parse",
+					"objectClass": "JSON",
+					"sid": 355284392562379,
+					"parameters": {
+						"data": "AJAX.LastData"
+					}
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Label",
+					"sid": 676673367264264,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "10",
+						"type": "once",
+						"tag": "\"timer\""
+					}
+				}
+			],
+			"sid": 351688333762743
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-timer-running",
+					"objectClass": "Label",
+					"sid": 370170301493765,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"timer\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-value",
+					"objectClass": "JSON",
+					"sid": 268466605543427,
+					"parameters": {
+						"path": "\"gamestart.0\"",
+						"value": "\"true\""
+					}
+				}
+			],
+			"sid": 647057671869391
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-timer",
+					"objectClass": "Label",
+					"sid": 772535057223152,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"timer\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-value",
+					"objectClass": "JSON",
+					"sid": 899798408114726,
+					"parameters": {
+						"path": "\"gamestart.0\"",
+						"value": "\"false\""
+					}
+				},
+				{
+					"callFunction": "CallRightAnswer",
+					"sid": 687148506958331
+				}
+			],
+			"sid": 577330233406453
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 690176439666043,
+					"parameters": {
+						"object": "text"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "text",
+					"sid": 394244870332149,
+					"parameters": {
+						"text": "JSON.Get(JSON.Get(\"lang.0\")&\".\"&JSON.Get(\"order.0\")&\".\"&text.data)"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "text",
+					"sid": 893440534020673,
+					"parameters": {
+						"instance-variable": "correctanswer",
+						"value": "JSON.Get(JSON.Get(\"lang.0\")&\".\"&JSON.Get(\"order.0\")&\".\"&\"correctanswer\")"
+					}
+				}
+			],
+			"sid": 472778264031402,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "text",
+							"sid": 511834624416296,
+							"parameters": {
+								"instance-variable": "data",
+								"comparison": 0,
+								"value": "\"points\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "text",
+							"sid": 955156622364063,
+							"parameters": {
+								"text": "\"Points : \"&JSON.Get(\"points.0\")"
+							}
+						}
+					],
+					"sid": 778715255243960
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 585927265464792,
+					"parameters": {
+						"object": "text"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "text",
+					"sid": 264226613728277,
+					"parameters": {
+						"instance-variable": "id",
+						"comparison": 0,
+						"value": "1"
+					}
+				},
+				{
+					"id": "compare-value",
+					"objectClass": "JSON",
+					"sid": 259833590840755,
+					"parameters": {
+						"path": "\"gamestart.0\"",
+						"cmp": 0,
+						"value": "\"true\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "stop-timer",
+					"objectClass": "Label",
+					"sid": 555895557066799,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"timer\""
+					}
+				}
+			],
+			"sid": 278849715984803,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "text",
+							"sid": 757474558875825,
+							"parameters": {
+								"instance-variable": "correctanswer",
+								"comparison": 1,
+								"value": "text.Text"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 970196762245761,
+							"parameters": {
+								"path": "\"positionlabel.0\"",
+								"value": "text.LabelX"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 712022443008916,
+							"parameters": {
+								"path": "\"positionlabel.1\"",
+								"value": "text.LabelY"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 827123626570365,
+							"parameters": {
+								"path": "\"framelabel.0\"",
+								"value": "1"
+							}
+						},
+						{
+							"id": "flash",
+							"objectClass": "Label",
+							"sid": 708059491207663,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1.5"
+							}
+						},
+						{
+							"id": "subtract-from",
+							"objectClass": "JSON",
+							"sid": 833572117750477,
+							"parameters": {
+								"path": "\"points.0\"",
+								"value": "1"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 149615265928217,
+							"parameters": {
+								"seconds": "1.5"
+							}
+						},
+						{
+							"callFunction": "CallRightAnswer",
+							"sid": 848337947376221
+						}
+					],
+					"sid": 513083018493988
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 753304212420515
+						}
+					],
+					"actions": [
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 125252411494393,
+							"parameters": {
+								"path": "\"positionlabel.0\"",
+								"value": "text.LabelX"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 280776097889106,
+							"parameters": {
+								"path": "\"positionlabel.1\"",
+								"value": "text.LabelY"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 102918793320180,
+							"parameters": {
+								"path": "\"framelabel.0\"",
+								"value": "0"
+							}
+						},
+						{
+							"id": "add-to",
+							"objectClass": "JSON",
+							"sid": 284789754482770,
+							"parameters": {
+								"path": "\"points.0\"",
+								"value": "1"
+							}
+						},
+						{
+							"id": "flash",
+							"objectClass": "Label",
+							"sid": 902059285842130,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1.5"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 868654115925432,
+							"parameters": {
+								"seconds": "1.5"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 508042754064554,
+							"parameters": {
+								"path": "\"positionlabel.0\"",
+								"value": "-300"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 869256308265076,
+							"parameters": {
+								"path": "\"positionlabel.1\"",
+								"value": "600"
+							}
+						},
+						{
+							"id": "add-to",
+							"objectClass": "JSON",
+							"sid": 334036469891107,
+							"parameters": {
+								"path": "\"order.0\"",
+								"value": "1"
+							}
+						},
+						{
+							"id": "subtract-from",
+							"objectClass": "JSON",
+							"sid": 985456023075248,
+							"parameters": {
+								"path": "\"questions.0\"",
+								"value": "1"
+							}
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "Label",
+							"sid": 255336063575006,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "10",
+								"type": "once",
+								"tag": "\"timer\""
+							}
+						}
+					],
+					"sid": 691847769869016
+				}
+			]
+		},
+		{
+			"functionName": "CallRightAnswer",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 383541425333389,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 797590659286409,
+							"parameters": {
+								"object": "text"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "text",
+							"sid": 954066666280945,
+							"parameters": {
+								"instance-variable": "correctanswer",
+								"comparison": 0,
+								"value": "text.Text"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 993480886285732,
+							"parameters": {
+								"path": "\"positionlabel.0\"",
+								"value": "text.LabelX"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 504299089221989,
+							"parameters": {
+								"path": "\"positionlabel.1\"",
+								"value": "text.LabelY"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 736247781232800,
+							"parameters": {
+								"path": "\"framelabel.0\"",
+								"value": "0"
+							}
+						},
+						{
+							"id": "flash",
+							"objectClass": "Label",
+							"sid": 386108664762045,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1.5"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 537127819647107,
+							"parameters": {
+								"seconds": "1.5"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 950371299749024,
+							"parameters": {
+								"path": "\"positionlabel.0\"",
+								"value": "-300"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "JSON",
+							"sid": 781980258248300,
+							"parameters": {
+								"path": "\"positionlabel.1\"",
+								"value": "600"
+							}
+						},
+						{
+							"id": "add-to",
+							"objectClass": "JSON",
+							"sid": 813410854755547,
+							"parameters": {
+								"path": "\"order.0\"",
+								"value": "1"
+							}
+						},
+						{
+							"id": "subtract-from",
+							"objectClass": "JSON",
+							"sid": 556281134872843,
+							"parameters": {
+								"path": "\"questions.0\"",
+								"value": "1"
+							}
+						},
+						{
+							"id": "start-timer",
+							"objectClass": "Label",
+							"sid": 245201317173773,
+							"behaviorType": "Timer",
+							"parameters": {
+								"duration": "10",
+								"type": "once",
+								"tag": "\"timer\""
+							}
+						}
+					],
+					"sid": 731169676228202
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "TextTime",
+					"sid": 692940003204952,
+					"parameters": {
+						"text": "Label.Timer.CurrentTime(\"timer\")"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Questions",
+					"sid": 320476048116397,
+					"parameters": {
+						"text": "\" Questions : \"&JSON.Get(\"questions.0\")"
+					}
+				},
+				{
+					"id": "set-position",
+					"objectClass": "Label",
+					"sid": 485850136658233,
+					"parameters": {
+						"x": "JSON.Get(\"positionlabel.0\")",
+						"y": "JSON.Get(\"positionlabel.1\")"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "Label",
+					"sid": 906271921231447,
+					"parameters": {
+						"frame-number": "JSON.Get(\"framelabel.0\")"
+					}
+				}
+			],
+			"sid": 475357914554026
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-value",
+					"objectClass": "JSON",
+					"sid": 677357042617041,
+					"parameters": {
+						"path": "\"questions.0\"",
+						"cmp": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-value",
+					"objectClass": "JSON",
+					"sid": 724146322054768,
+					"parameters": {
+						"path": "\"gameover.0\"",
+						"value": "\"true\""
+					}
+				}
+			],
+			"sid": 607172547829570
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-value",
+					"objectClass": "JSON",
+					"sid": 204529690571175,
+					"parameters": {
+						"path": "\"gameover.0\"",
+						"cmp": 0,
+						"value": "\"true\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 966881702526953,
+					"parameters": {
+						"layout": "gameover"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Button",
+					"sid": 640976401142108,
+					"parameters": {
+						"mode": "enabled"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "Button",
+					"sid": 482199967638169,
+					"parameters": {
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 344717592988656
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "Button",
+					"sid": 486464117624249
+				}
+			],
+			"actions": [
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 937764178090896
+				}
+			],
+			"sid": 706451345113306
+		}
+	],
+	"sid": 155976482819132
+}
