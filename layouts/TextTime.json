@@ -455,7 +455,7 @@
 					"type": "Button",
 					"properties": {
 						"type": "button",
-						"text": "VOLVER",
+						"text": "Volver.",
 						"tooltip": "",
 						"initially-visible": true,
 						"enabled": true,
